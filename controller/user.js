@@ -19,15 +19,15 @@ module.exports.login = async(req, res) => {
       const token = jwt.sign(
         { id: user._id},
         process.env.SECRET, // Use a secure key in production
-        { expiresIn: "2h" } // Token expiry
-      );
-  
-      res.status(200).cookie("jwt", token, {
-        httpOnly: true,
+        
+        {
+          httpOnly: true,
         secure: true, // Ensure this is true in production
         sameSite: 'Strict', // Prevent cross-site request forgery
-        maxAge: 3600000, // 1 hour
-      }).json({success:true,  token });
+           expiresIn: "2h" } // Token expiry
+      );
+  
+      res.status(200).cookie("jwt", token).json({success:true,  token });
     } catch (error) {
       res.status(500).json({ error: "Login failed" });
     }}

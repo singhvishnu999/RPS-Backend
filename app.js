@@ -19,7 +19,6 @@ mongoose.connect(process.env.MONGO_URI)
 const corsOption = {
     origin: 'https://rps-moresarai.netlify.app',
     credentials: true,
-    optionsSuccessStatus: 200,
     method: "GET POST DELETE PUT",
 }
 
