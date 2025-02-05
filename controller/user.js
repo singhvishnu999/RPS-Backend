@@ -29,7 +29,7 @@ module.exports.login = async (req, res) => {
         httpOnly: true,
         secure: true, // Ensure this is true in production
         sameSite: "Strict", // Prevent cross-site request forgery
-        // maxAge: "2h", // Token expiry
+        maxAge: 2 * 60 * 60 * 1000, // 2 hours
       })
       .json({ success: true, token });
   } catch (error) {
