@@ -8,18 +8,18 @@ module.exports.studentValidationSchema = Joi.object({
   address: Joi.string().required(),
   motherName: Joi.string().required(),
   mobileNo: Joi.string()
-    .pattern(/^[6-9]\d{9}$/) // Validates a 10-digit Indian mobile number
+    .pattern(/^[6-9]\d{9}$/) 
     .required(),
   aadhar: Joi.string()
-    .pattern(/^\d{12}$/) // Validates a 12-digit Aadhaar number
+    .pattern(/^\d{12}$/) 
     .required(),
   class: Joi.string().required(),
   amount: Joi.object({
     due: Joi.number().min(0).required(),
     paid: Joi.number().min(0).required(),
   }).required(),
-  age: Joi.number().integer().min(3).max(20).required(), // Assuming reasonable age range
-  transport: Joi.string().required(), // Assuming transport is a yes/no field
+  age: Joi.number().integer().min(3).max(20).required(), 
+  transport: Joi.string().required(), 
   createdAt: Joi.date().default(Date.now),
 });
 
