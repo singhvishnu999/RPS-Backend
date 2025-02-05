@@ -17,7 +17,7 @@ mongoose
   .catch((err) => console.log(err));
 
 const corsOption = {
-  origin: "http://localhost:5173",
+  origin: "https://rps-moresarai.netlify.app",
   credentials: true,
   method: "GET POST DELETE PUT",
 };
