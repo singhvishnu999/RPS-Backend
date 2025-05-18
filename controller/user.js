@@ -5,8 +5,6 @@ const jwt = require("jsonwebtoken");
 module.exports.login = async (req, res) => {
   try {
     const { username, password } = req.body;
-    console.log(req.body);
-
     // Find user by username
     const user = await User.findOne({ username });
     if (!user) return res.status(404).json({ error: "User not found" });
@@ -15,7 +13,7 @@ module.exports.login = async (req, res) => {
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid)
       return res.status(401).json({ error: "Invalid credentials" });
-
+   
     // Generate JWT token
     const token = jwt.sign(
       { id: user._id },
@@ -29,9 +27,9 @@ module.exports.login = async (req, res) => {
         httpOnly: true,
         secure: true, // Ensure this is true in production
         sameSite: "Strict", // Prevent cross-site request forgery
-        maxAge: 2 * 60 * 60 * 1000, // 2 hours
+        maxAge: 2*60*60*1000, // 2 hours
       })
-      .json({ success: true, token });
+      .json({ success: true, user });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Login failed" });

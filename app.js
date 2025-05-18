@@ -11,13 +11,15 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // connection to MongoDB database
+// .connect(process.env.MONGO_URI)
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
-
+  
+  // https://rps-moresarai.netlify.app
 const corsOption = {
-  origin: "https://rps-moresarai.netlify.app",
+  origin: "http://localhost:5173",
   credentials: true,
   method: "GET POST DELETE PUT",
 };
@@ -35,7 +37,7 @@ app.get("/api/getToken", (req, res) => {
   if (token) {
     res.status(200).json({ success: true, token: token });
   } else {
-    res.status(400).json({ success: false, token: null });
+    res.status(200).json({ success: false, token: null });
   }
 });
 app.use("/api/students", studentRoutes);
