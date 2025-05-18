@@ -19,7 +19,8 @@ mongoose
   
   // https://rps-moresarai.netlify.app
 const corsOption = {
-  origin: "http://localhost:5173",
+  origin:"https://rps-moresarai.netlify.app",
+  // origin: "http://localhost:5173",
   credentials: true,
   method: "GET POST DELETE PUT",
 };
