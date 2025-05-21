@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const studentRoutes = require("./routes/student");
 const teacherRoutes = require("./routes/teacher");
 const uesrRoutes = require("./routes/user");
+const chatRoutes = require('./routes/chatRoutes');
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -19,8 +20,8 @@ mongoose
   
   // https://rps-moresarai.netlify.app
 const corsOption = {
-  origin:"https://rps-moresarai.netlify.app",
-  // origin: "http://localhost:5173",
+  // origin:"https://rps-moresarai.netlify.app",
+  origin: "http://localhost:5173",
   credentials: true,
   method: "GET POST DELETE PUT",
 };
@@ -44,6 +45,7 @@ app.get("/api/getToken", (req, res) => {
 app.use("/api/students", studentRoutes);
 app.use("/api/teacher", teacherRoutes);
 app.use("/api/user", uesrRoutes);
+app.use("/api/chatAi", chatRoutes);
 
 app.all("*", (req, res, next) => {
   res.status(404).send("<h1>PAGE NOT FOUND<h1/>");
