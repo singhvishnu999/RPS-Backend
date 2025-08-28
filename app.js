@@ -18,10 +18,10 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
   
-  // https://rps-moresarai.netlify.app
+  const url = "https://rps-moresarai.netlify.app";
+  const url2 = "http://localhost:5173"; 
 const corsOption = {
-  origin:"https://rps-moresarai.netlify.app",
-  // origin: "http://localhost:5173",
+  origin: url2,
   credentials: true,
   method: "GET POST DELETE PUT",
 };
