@@ -21,7 +21,7 @@ mongoose
   const url = "https://rps-moresarai.netlify.app";
   const url2 = "http://localhost:5173"; 
 const corsOption = {
-  origin: url2,
+  origin: url,
   credentials: true,
   method: "GET POST DELETE PUT",
 };
